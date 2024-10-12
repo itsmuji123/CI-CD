@@ -11,18 +11,23 @@ jobs:
 
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v4  # Updated to v4 for Node 20
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4  # Updated to v4 for Node 20
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'  # This is for your project setup, can be 16 or 18 if needed
+          node-version: '16'
 
       - name: Install dependencies
         run: npm install
 
       - name: Build the React app
         run: npm run build
+
+      - name: Configure Git Identity
+        run: |
+          git config --global user.email "h.mujtabaayaz@gmail.com"
+          git config --global user.name "itsmuji123"
 
       - name: Deploy to GitHub Pages
         run: npm run deploy
